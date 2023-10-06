@@ -1,2 +1,3 @@
 rootProject.name = 'For_HxH_school_from_Dementev_Mark'
+include 'app'
 
