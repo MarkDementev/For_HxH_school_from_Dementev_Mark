@@ -11,12 +11,12 @@ public class Engine {
         Monster monster = (Monster) monsterAndGamer[0];
         Gamer gamer = (Gamer) monsterAndGamer[1];
 
-        try(Scanner turnsScanner = new Scanner(System.in)) {
-            while(monster.getHealth() != 0 || gamer.getHealth() != 0) {
-
-            }
-//            String playerTurnOrderChoice = playerInteractionScanner.next();
-//            startGame(playerTurnOrderChoice);
-        }
+//        try(Scanner turnsScanner = new Scanner(System.in)) {
+//            while(monster.getHealth() != 0 || gamer.getHealth() != 0) {
+//
+//            }
+////            String playerTurnOrderChoice = playerInteractionScanner.next();
+////            startGame(playerTurnOrderChoice);
+//        }
     }
 }

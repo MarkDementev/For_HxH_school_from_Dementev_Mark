@@ -15,5 +15,5 @@ public abstract class Creature {
         this.currentHealth = health;
     }
 
-    public abstract void attack();
+//    public abstract void attack();
 }
