@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+
+    id 'se.patrikerdes.use-latest-versions' version '0.2.18'
+    id 'com.github.ben-manes.versions' version '0.48.0'
+
+    id 'io.ebean' version '13.22.0'
+}
+
+group = 'forHxH.game'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    implementation 'io.ebean:ebean:13.22.0'
+    annotationProcessor 'io.ebean:querybean-generator:13.22.0'
+    testImplementation 'io.ebean:ebean-test:13.22.0'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+compileJava {
+    options.release = 17
+    options.encoding = 'UTF-8'
+}
