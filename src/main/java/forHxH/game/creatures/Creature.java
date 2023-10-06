@@ -1,11 +1,11 @@
 package forHxH.game.creatures;
 
 public abstract class Creature {
-    protected final int attack;
-    protected final int[] damage;
-    protected final int protection;
-    protected final int maxHealth;
-    protected int currentHealth;
+    private final int attack;
+    private final int[] damage;
+    private final int protection;
+    private final int maxHealth;
+    private int currentHealth;
 
     public Creature(int attack, int[] damage, int protection, int health) {
         this.attack = attack;
@@ -15,5 +15,31 @@ public abstract class Creature {
         this.currentHealth = health;
     }
 
-//    public abstract void attack();
+    public int getAttack() {
+        return attack;
+    }
+
+    public int[] getDamage() {
+        return damage;
+    }
+
+    public int getProtection() {
+        return protection;
+    }
+
+    public int getMaxHealth() {
+        return maxHealth;
+    }
+
+    public int getCurrentHealth() {
+        return currentHealth;
+    }
+
+    public void setCurrentHealth(int health) {
+        this.currentHealth = health;
+    }
+
+    public void attack() {
+
+    }
 }

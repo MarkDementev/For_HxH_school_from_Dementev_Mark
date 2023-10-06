@@ -5,7 +5,7 @@ import forHxH.game.actions.Heal;
 public class Gamer extends Creature implements Heal {
     public static final String CREATURE_TYPE_GAMER = "Gamer";
     private int healCount = 4;
-    private int healPower = (int) (0.3 * maxHealth);
+    private final int healPower = (int) (0.3 * getMaxHealth());
 
     public Gamer(int attack, int[] damage, int protection, int health) {
         super(attack, damage, protection, health);
@@ -15,7 +15,7 @@ public class Gamer extends Creature implements Heal {
     public Creature healYourself() {
         if (healCount >= 0) {
             healCount--;
-            currentHealth = Math.min(currentHealth + healPower, maxHealth);
+            setCurrentHealth(Math.min(getCurrentHealth() + healPower, getMaxHealth()));
             return this;
         }
         System.out.println(NO_HEAL_CASTS_ERROR);
