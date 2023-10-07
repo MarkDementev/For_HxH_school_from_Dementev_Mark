@@ -13,11 +13,11 @@ public class GameSession {
     public static final String GAMER_WIN_TEXT = "Monster is dead! Congratulations!";
     public static final String MONSTER_WIN_TEXT = "Monster is win :(! Try again to fight!";
     public static final String AGAINST_TEXT = " acts against ";
-    public static final String GAMER_ROUND_EXPLANATION = "Gamer, are you attack or heal yourself?" +
-            " Enter your choice - A or H.";
+    public static final String GAMER_ROUND_EXPLANATION = "Gamer, are you attack or heal yourself?"
+            + " Enter your choice - A or H.";
     public static final String HEAL_RESULT_TEXT = "Gamer healed yourself for ";
-    public static final String WRONG_TURN_INPUT_ERROR = "Wrong input. Please, input A to attack Monster or H " +
-            "to heal yourself, or Q to exit.";
+    public static final String WRONG_TURN_INPUT_ERROR = "Wrong input. Please, input A to attack Monster or H "
+            + "to heal yourself, or Q to exit.";
     public static final String HEALTH_STATUS = " current health is now ";
     public static final String HEAL_COUNT_STATUS = " healing casts is now ";
     public static final String GAMER_ATTACK_SUCCESS_TEXT = "The Gamer damaged Monster for ";
@@ -35,8 +35,8 @@ public class GameSession {
     }
 
     public void playGame() {
-        try(Scanner turnScanner = new Scanner(System.in)) {
-            while(monster.getCurrentHealth() != 0 && gamer.getCurrentHealth() != 0) {
+        try (Scanner turnScanner = new Scanner(System.in)) {
+            while (monster.getCurrentHealth() != 0 && gamer.getCurrentHealth() != 0) {
                 doRound(turnScanner);
             }
         }
@@ -61,7 +61,7 @@ public class GameSession {
         System.out.println(CREATURE_TYPE_MONSTER + HEALTH_STATUS + monster.getCurrentHealth());
         System.out.println("~~~~~~~~~~~~");
 
-        switch(turnOrder) {
+        switch (turnOrder) {
             case CREATURE_TYPE_GAMER -> {
                 attackerName = CREATURE_TYPE_GAMER;
                 defenderName = CREATURE_TYPE_MONSTER;

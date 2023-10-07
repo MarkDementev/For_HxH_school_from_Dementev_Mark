@@ -20,14 +20,6 @@ public abstract class Creature {
         this.currentHealth = health;
     }
 
-    public int getAttack() {
-        return attack;
-    }
-
-    public int[] getDamageRange() {
-        return damageRange;
-    }
-
     public int getProtection() {
         return protection;
     }

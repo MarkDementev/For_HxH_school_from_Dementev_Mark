@@ -18,8 +18,7 @@ public class Generator {
     private static final int HEALTH_MAX_VALUE = 20;
 
     public static int generateValue(int minValue, int maxValue) {
-        return (int) (Math.random() *
-                (maxValue - minValue) + minValue);
+        return (int) (Math.random() * (maxValue - minValue) + minValue);
     }
 
     public static int[] generateValuesRange(int minValue, int maxValue) {

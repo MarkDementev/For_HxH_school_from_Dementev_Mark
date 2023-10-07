@@ -10,7 +10,7 @@ public class Dices {
         for (int i = 0; i < dicesCount; i++) {
             int diceThrowResult = generateValue(diceType[0], diceType[1]);
 
-            if(successValues.contains(diceThrowResult)) {
+            if (successValues.contains(diceThrowResult)) {
                 return true;
             }
         }
