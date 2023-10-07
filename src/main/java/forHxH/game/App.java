@@ -21,20 +21,20 @@ public class App {
     }
 
     private static void startGame() {
-        try(Scanner gameStartScanner = new Scanner(System.in)) {
-            String playerTurnOrderChoice = gameStartScanner.next();
+        Scanner gameStartScanner = new Scanner(System.in);
+        String playerTurnOrderChoice = gameStartScanner.next();
 
-            switch (playerTurnOrderChoice) {
-                case "A" -> GamePreparation.prepareGame(CREATURE_TYPE_GAMER);
-                case "D" -> GamePreparation.prepareGame(CREATURE_TYPE_MONSTER);
-                case "Q" -> {
-                    System.out.println(BYE_MESSAGE);
-                    System.exit(0);
-                }
-                default -> {
-                    System.out.println(WRONG_START_INPUT_ERROR);
-                    startGame();
-                }
+        switch (playerTurnOrderChoice) {
+            case "A" -> GamePreparation.prepareGame(CREATURE_TYPE_GAMER);
+            case "D" -> GamePreparation.prepareGame(CREATURE_TYPE_MONSTER);
+            case "Q" -> {
+                System.out.println(BYE_MESSAGE);
+                gameStartScanner.close();
+                System.exit(0);
+            }
+            default -> {
+                System.out.println(WRONG_START_INPUT_ERROR);
+                startGame();
             }
         }
     }

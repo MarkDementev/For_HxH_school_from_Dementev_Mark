@@ -4,7 +4,6 @@ import static forHxH.game.utils.Dices.DICE_TYPE_SIX_SIDED;
 import static forHxH.game.utils.Dices.isSuccessfulThrowOneEnough;
 import static forHxH.game.utils.Generator.generateValue;
 import java.util.HashSet;
-import java.util.Set;
 
 public abstract class Creature {
     private final int attack;
@@ -48,7 +47,9 @@ public abstract class Creature {
     public int attackAndCalculateDamage(Creature defender) {
         int attackModifier = attack - defender.getProtection() + 1;
         int diceCount = Math.max(attackModifier, 1);
-        HashSet<Integer> successValues = (HashSet<Integer>) Set.of(5, 6);
+        HashSet<Integer> successValues = new HashSet<>();
+        successValues.add(5);
+        successValues.add(6);
         boolean isSuccessfulAttack = isSuccessfulThrowOneEnough(DICE_TYPE_SIX_SIDED, diceCount, successValues);
         int damagePower = generateValue(damageRange[0], damageRange[1]);
 

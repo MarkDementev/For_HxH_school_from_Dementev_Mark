@@ -30,8 +30,10 @@ public class GameSession {
     }
 
     public void playGame() {
-        while(monster.getCurrentHealth() != 0 || gamer.getCurrentHealth() != 0) {
-            makeRound();
+        try(Scanner turnScanner = new Scanner(System.in)) {
+            while(monster.getCurrentHealth() != 0 || gamer.getCurrentHealth() != 0) {
+                makeRound(turnScanner);
+            }
         }
 
         if (gamer.getCurrentHealth() == 0) {
@@ -42,14 +44,17 @@ public class GameSession {
         System.exit(0);
     }
 
-    private void makeRound() {
+    private void makeRound(Scanner turnScanner) {
         String attackerName;
         String defenderName;
         int damageInRound = 0;
 
+        System.out.println("~~~~~~~~~~~~");
         System.out.println(CREATURE_TYPE_GAMER + HEALTH_STATUS + gamer.getCurrentHealth());
-        System.out.println(CREATURE_TYPE_MONSTER + HEALTH_STATUS + monster.getCurrentHealth());
         System.out.println(CREATURE_TYPE_GAMER + HEAL_COUNT_STATUS + gamer.getHealCount());
+        System.out.println("------------");
+        System.out.println(CREATURE_TYPE_MONSTER + HEALTH_STATUS + monster.getCurrentHealth());
+        System.out.println("~~~~~~~~~~~~");
 
         switch(turnOrder) {
             case CREATURE_TYPE_GAMER -> {
@@ -69,17 +74,15 @@ public class GameSession {
         if (turnOrder.equals(CREATURE_TYPE_GAMER)) {
             System.out.println(GAMER_ROUND_EXPLANATION);
 
-            try(Scanner turnScanner = new Scanner(System.in)) {
-                String playerTurnChoice = turnScanner.next();
+            String playerTurnChoice = turnScanner.next();
 
-                switch (playerTurnChoice) {
-                    case "A" -> monster.setCurrentHealth(Math.max(monster.getCurrentHealth() - damageInRound, 0));
-                    case "H" -> {
-                        gamer = gamer.healYourself();
-                        System.out.println(HEAL_RESULT_TEXT);
-                    }
-                    default -> System.out.println(WRONG_TURN_INPUT_ERROR);
+            switch (playerTurnChoice) {
+                case "A" -> monster.setCurrentHealth(Math.max(monster.getCurrentHealth() - damageInRound, 0));
+                case "H" -> {
+                    gamer = gamer.healYourself();
+                    System.out.println(HEAL_RESULT_TEXT);
                 }
+                default -> System.out.println(WRONG_TURN_INPUT_ERROR);
             }
         } else {
             gamer.setCurrentHealth(Math.max(gamer.getCurrentHealth() - damageInRound, 0));
