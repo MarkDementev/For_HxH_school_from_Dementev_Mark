@@ -6,7 +6,7 @@ import forHxH.game.creatures.Creature;
 import forHxH.game.creatures.Gamer;
 import forHxH.game.creatures.Monster;
 
-public class GenerateCreature {
+public class Generator {
     public static final String WRONG_CREATURE_TYPE_WARNING = "There is unknown creature. Check it!";
     private static final int ATTACK_MIN_VALUE = 1;
     private static final int ATTACK_MAX_VALUE = 30;
@@ -16,6 +16,15 @@ public class GenerateCreature {
     private static final int PROTECTION_MAX_VALUE = 30;
     private static final int HEALTH_MIN_VALUE = 1;
     private static final int HEALTH_MAX_VALUE = 20;
+
+    public static int generateValue(int minValue, int maxValue) {
+        return (int) (Math.random() *
+                (maxValue - minValue) + minValue);
+    }
+
+    public static int[] generateValuesRange(int minValue, int maxValue) {
+        return new int[] {generateValue(minValue, maxValue), generateValue(minValue, maxValue)};
+    }
 
     public static Creature generateDefaultCreature(String creatureType) {
         int attack = generateValue(ATTACK_MIN_VALUE, ATTACK_MAX_VALUE);
@@ -32,14 +41,5 @@ public class GenerateCreature {
             }
             default -> throw new RuntimeException(WRONG_CREATURE_TYPE_WARNING);
         }
-    }
-
-    private static int generateValue(int minValue, int maxValue) {
-        return (int) (Math.random() *
-                (maxValue - minValue) + minValue);
-    }
-
-    private static int[] generateValuesRange(int minValue, int maxValue) {
-        return new int[] {generateValue(minValue, maxValue), generateValue(minValue, maxValue)};
     }
 }

@@ -1,7 +1,8 @@
 package forHxH.game.creatures;
 
 import static forHxH.game.utils.Dices.DICE_TYPE_SIX_SIDED;
-import static forHxH.game.utils.Dices.isSuccessfulThrow;
+import static forHxH.game.utils.Dices.isSuccessfulThrowOneEnough;
+import static forHxH.game.utils.Generator.generateValue;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -44,13 +45,12 @@ public abstract class Creature {
         this.currentHealth = health;
     }
 
-    //Method to be renamed!?
-    public int attack(Creature attacker, Creature defender) {
+    public int attackAndCalculateDamage(Creature attacker, Creature defender) {
         int attackModifier = attacker.getAttack() - defender.getProtection() + 1;
         int diceCount = Math.max(attackModifier, 1);
         HashSet<Integer> successValues = (HashSet<Integer>) Set.of(5, 6);
-        boolean isSuccessfulAttack = isSuccessfulThrow(DICE_TYPE_SIX_SIDED, diceCount, successValues);
-        //nt damagePower = Math.r;
+        boolean isSuccessfulAttack = isSuccessfulThrowOneEnough(DICE_TYPE_SIX_SIDED, diceCount, successValues);
+        int damagePower = generateValue(damageRange[0], damageRange[1]);
 
         return isSuccessfulAttack ? damagePower : 0;
     }
