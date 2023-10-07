@@ -20,14 +20,13 @@ public class Gamer extends Creature implements Heal {
     }
 
     @Override
-    public Creature healYourself() {
+    public Gamer healYourself() {
         if (healCount >= 0) {
             healCount--;
             setCurrentHealth(Math.min(getCurrentHealth() + healPower, getMaxHealth()));
             return this;
         }
-        System.out.println(NO_HEAL_CASTS_ERROR);
-
+        System.out.println(NO_HEAL_CASTS_TEXT);
         return this;
     }
 }

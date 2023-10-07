@@ -6,11 +6,12 @@ import forHxH.game.creatures.Creature;
 import forHxH.game.utils.Generator;
 
 public class GamePreparation {
-    public static void prepareGame(String turnOrders) {
+    public static void prepareGame(String turnOrder) {
         Creature[] monsterAndGamer = new Creature[2];
         monsterAndGamer[0] = Generator.generateDefaultCreature(CREATURE_TYPE_MONSTER);
         monsterAndGamer[1] = Generator.generateDefaultCreature(CREATURE_TYPE_GAMER);
 
-        Engine.startGame(turnOrders, monsterAndGamer);
+        GameSession gameSession = new GameSession(turnOrder, monsterAndGamer);
+        gameSession.playGame();
     }
 }
