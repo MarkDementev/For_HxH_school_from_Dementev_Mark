@@ -1,5 +1,6 @@
 package forHxH.game.engine;
 
+import static forHxH.game.App.BYE_MESSAGE;
 import static forHxH.game.creatures.Gamer.CREATURE_TYPE_GAMER;
 import static forHxH.game.creatures.Monster.CREATURE_TYPE_MONSTER;
 import static forHxH.game.utils.Generator.WRONG_CREATURE_TYPE_WARNING;
@@ -13,12 +14,16 @@ public class GameSession {
     public static final String MONSTER_WIN_TEXT = "Monster is win :(! Try again to fight!";
     public static final String AGAINST_TEXT = " acts against ";
     public static final String GAMER_ROUND_EXPLANATION = "Gamer, are you attack or heal yourself?" +
-            " Enter your choice - A/H.";
-    public static final String HEAL_RESULT_TEXT = "Gamer healed yourself.";
-    public static final String WRONG_TURN_INPUT_ERROR = "Wrong input. Please, input 'A' or 'H' to attack monster" +
-            " or heal yourself";
+            " Enter your choice - A or H.";
+    public static final String HEAL_RESULT_TEXT = "Gamer healed yourself for ";
+    public static final String WRONG_TURN_INPUT_ERROR = "Wrong input. Please, input A to attack Monster or H " +
+            "to heal yourself, or Q to exit.";
     public static final String HEALTH_STATUS = " current health is now ";
     public static final String HEAL_COUNT_STATUS = " healing casts is now ";
+    public static final String GAMER_ATTACK_SUCCESS_TEXT = "The Gamer damaged Monster for ";
+    public static final String GAMER_ATTACK_FAIL_TEXT = "The Gamer attack missed the Monster! :(";
+    public static final String MONSTER_ATTACK_SUCCESS_TEXT = "The Monster damaged Gamer for ";
+    public static final String MONSTER_ATTACK_FAIL_TEXT = "The Monster attack missed the Gamer! :)";
     private String turnOrder;
     private Monster monster;
     private Gamer gamer;
@@ -31,8 +36,8 @@ public class GameSession {
 
     public void playGame() {
         try(Scanner turnScanner = new Scanner(System.in)) {
-            while(monster.getCurrentHealth() != 0 || gamer.getCurrentHealth() != 0) {
-                makeRound(turnScanner);
+            while(monster.getCurrentHealth() != 0 && gamer.getCurrentHealth() != 0) {
+                doRound(turnScanner);
             }
         }
 
@@ -44,7 +49,7 @@ public class GameSession {
         System.exit(0);
     }
 
-    private void makeRound(Scanner turnScanner) {
+    private void doRound(Scanner turnScanner) {
         String attackerName;
         String defenderName;
         int damageInRound = 0;
@@ -73,18 +78,13 @@ public class GameSession {
 
         if (turnOrder.equals(CREATURE_TYPE_GAMER)) {
             System.out.println(GAMER_ROUND_EXPLANATION);
-
-            String playerTurnChoice = turnScanner.next();
-
-            switch (playerTurnChoice) {
-                case "A" -> monster.setCurrentHealth(Math.max(monster.getCurrentHealth() - damageInRound, 0));
-                case "H" -> {
-                    gamer = gamer.healYourself();
-                    System.out.println(HEAL_RESULT_TEXT);
-                }
-                default -> System.out.println(WRONG_TURN_INPUT_ERROR);
-            }
+            doGamerTurn(turnScanner, damageInRound);
         } else {
+            if (damageInRound > 0) {
+                System.out.println(MONSTER_ATTACK_SUCCESS_TEXT + damageInRound + "!");
+            } else {
+                System.out.println(MONSTER_ATTACK_FAIL_TEXT);
+            }
             gamer.setCurrentHealth(Math.max(gamer.getCurrentHealth() - damageInRound, 0));
         }
 
@@ -92,6 +92,33 @@ public class GameSession {
             turnOrder = CREATURE_TYPE_MONSTER;
         } else {
             turnOrder = CREATURE_TYPE_GAMER;
+        }
+    }
+
+    private void doGamerTurn(Scanner turnScanner, int damageInRound) {
+        String playerTurnChoice = turnScanner.next();
+
+        switch (playerTurnChoice) {
+            case "A" -> {
+                if (damageInRound > 0) {
+                    System.out.println(GAMER_ATTACK_SUCCESS_TEXT + damageInRound + "!");
+                } else {
+                    System.out.println(GAMER_ATTACK_FAIL_TEXT);
+                }
+                monster.setCurrentHealth(Math.max(monster.getCurrentHealth() - damageInRound, 0));
+            }
+            case "H" -> {
+                System.out.println(HEAL_RESULT_TEXT + gamer.getHealPower() + ".");
+                gamer = gamer.healYourself();
+            }
+            case "Q" -> {
+                System.out.println(BYE_MESSAGE);
+                System.exit(0);
+            }
+            default -> {
+                System.out.println(WRONG_TURN_INPUT_ERROR);
+                doGamerTurn(turnScanner, damageInRound);
+            }
         }
     }
 }

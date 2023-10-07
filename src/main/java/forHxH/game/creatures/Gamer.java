@@ -15,8 +15,8 @@ public class Gamer extends Creature implements Heal {
         return healCount;
     }
 
-    public void setHealCount(int healCount) {
-        this.healCount = healCount;
+    public int getHealPower() {
+        return healPower;
     }
 
     @Override
