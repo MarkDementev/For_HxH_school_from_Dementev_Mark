@@ -7,8 +7,16 @@ public class Gamer extends Creature implements Heal {
     private int healCount = 4;
     private final int healPower = (int) (0.3 * getMaxHealth());
 
-    public Gamer(int attack, int[] damage, int protection, int health) {
-        super(attack, damage, protection, health);
+    public Gamer(int attack, int[] damageRange, int protection, int health) {
+        super(attack, damageRange, protection, health);
+    }
+
+    public int getHealCount() {
+        return healCount;
+    }
+
+    public void setHealCount(int healCount) {
+        this.healCount = healCount;
     }
 
     @Override
@@ -21,13 +29,5 @@ public class Gamer extends Creature implements Heal {
         System.out.println(NO_HEAL_CASTS_ERROR);
 
         return this;
-    }
-
-    public int getHealCount() {
-        return healCount;
-    }
-
-    public void setHealCount(int healCount) {
-        this.healCount = healCount;
     }
 }
