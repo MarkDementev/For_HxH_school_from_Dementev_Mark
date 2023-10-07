@@ -1,8 +1,8 @@
-package forHxH.game;
+package game;
 
-import static forHxH.game.creatures.Gamer.CREATURE_TYPE_GAMER;
-import static forHxH.game.creatures.Monster.CREATURE_TYPE_MONSTER;
-import forHxH.game.engine.GamePreparation;
+import static game.creatures.Gamer.CREATURE_TYPE_GAMER;
+import static game.creatures.Monster.CREATURE_TYPE_MONSTER;
+import game.engine.GamePreparation;
 import java.util.Scanner;
 
 public class App {

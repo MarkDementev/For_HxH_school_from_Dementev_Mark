@@ -1,6 +1,5 @@
-package forHxH.game.utils;
+package game.utils;
 
-import static forHxH.game.utils.Generator.generateValue;
 import java.util.HashSet;
 
 public class Dices {
@@ -8,7 +7,7 @@ public class Dices {
 
     public static boolean isSuccessfulThrowOneEnough(int[] diceType, int dicesCount, HashSet<Integer> successValues) {
         for (int i = 0; i < dicesCount; i++) {
-            int diceThrowResult = generateValue(diceType[0], diceType[1]);
+            int diceThrowResult = Generator.generateValue(diceType[0], diceType[1]);
 
             if (successValues.contains(diceThrowResult)) {
                 return true;

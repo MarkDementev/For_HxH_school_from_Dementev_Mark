@@ -1,9 +1,9 @@
-package forHxH.game.engine;
+package game.engine;
 
-import static forHxH.game.creatures.Monster.CREATURE_TYPE_MONSTER;
-import static forHxH.game.creatures.Gamer.CREATURE_TYPE_GAMER;
-import forHxH.game.creatures.Creature;
-import forHxH.game.utils.Generator;
+import static game.creatures.Monster.CREATURE_TYPE_MONSTER;
+import static game.creatures.Gamer.CREATURE_TYPE_GAMER;
+import game.creatures.Creature;
+import game.utils.Generator;
 
 public class GamePreparation {
     public static void prepareGame(String turnOrder) {

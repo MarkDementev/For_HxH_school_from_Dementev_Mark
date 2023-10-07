@@ -1,11 +1,11 @@
-package forHxH.game.creatures;
+package game.creatures;
 
-import static forHxH.game.utils.Dices.DICE_TYPE_SIX_SIDED;
-import static forHxH.game.utils.Dices.isSuccessfulThrowOneEnough;
-import static forHxH.game.utils.Generator.generateValue;
+import game.utils.Dices;
+import game.utils.Generator;
 import java.util.HashSet;
 
 public abstract class Creature {
+    public static final int[] CREATURE_DEFAULT_SUCCESSFUL_ATTACK_VALUES = {5, 6};
     private final int attack;
     private final int[] damageRange;
     private final int protection;
@@ -40,10 +40,13 @@ public abstract class Creature {
         int attackModifier = attack - defender.getProtection() + 1;
         int diceCount = Math.max(attackModifier, 1);
         HashSet<Integer> successValues = new HashSet<>();
-        successValues.add(5);
-        successValues.add(6);
-        boolean isSuccessfulAttack = isSuccessfulThrowOneEnough(DICE_TYPE_SIX_SIDED, diceCount, successValues);
-        int damagePower = generateValue(damageRange[0], damageRange[1]);
+
+        for (int successfulValue : CREATURE_DEFAULT_SUCCESSFUL_ATTACK_VALUES) {
+            successValues.add(successfulValue);
+        }
+        boolean isSuccessfulAttack = Dices.isSuccessfulThrowOneEnough(Dices.DICE_TYPE_SIX_SIDED,
+                diceCount, successValues);
+        int damagePower = Generator.generateValue(damageRange[0], damageRange[1]);
 
         return isSuccessfulAttack ? damagePower : 0;
     }

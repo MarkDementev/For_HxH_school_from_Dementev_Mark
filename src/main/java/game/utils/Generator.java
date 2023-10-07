@@ -1,10 +1,10 @@
-package forHxH.game.utils;
+package game.utils;
 
-import static forHxH.game.creatures.Monster.CREATURE_TYPE_MONSTER;
-import static forHxH.game.creatures.Gamer.CREATURE_TYPE_GAMER;
-import forHxH.game.creatures.Creature;
-import forHxH.game.creatures.Gamer;
-import forHxH.game.creatures.Monster;
+import static game.creatures.Monster.CREATURE_TYPE_MONSTER;
+import static game.creatures.Gamer.CREATURE_TYPE_GAMER;
+import game.creatures.Creature;
+import game.creatures.Gamer;
+import game.creatures.Monster;
 
 public class Generator {
     public static final String WRONG_CREATURE_TYPE_WARNING = "There is unknown creature. Check it!";

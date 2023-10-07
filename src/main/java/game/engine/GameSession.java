@@ -1,12 +1,14 @@
-package forHxH.game.engine;
+package game.engine;
 
-import static forHxH.game.App.BYE_MESSAGE;
-import static forHxH.game.creatures.Gamer.CREATURE_TYPE_GAMER;
-import static forHxH.game.creatures.Monster.CREATURE_TYPE_MONSTER;
-import static forHxH.game.utils.Generator.WRONG_CREATURE_TYPE_WARNING;
-import forHxH.game.creatures.Creature;
-import forHxH.game.creatures.Gamer;
-import forHxH.game.creatures.Monster;
+import static game.creatures.Gamer.CREATURE_TYPE_GAMER;
+import static game.creatures.Monster.CREATURE_TYPE_MONSTER;
+
+import game.App;
+import game.creatures.Creature;
+import game.creatures.Gamer;
+import game.creatures.Monster;
+import game.utils.Generator;
+
 import java.util.Scanner;
 
 public class GameSession {
@@ -72,7 +74,7 @@ public class GameSession {
                 defenderName = CREATURE_TYPE_GAMER;
                 damageInRound = monster.attackAndCalculateDamage(gamer);
             }
-            default -> throw new RuntimeException(WRONG_CREATURE_TYPE_WARNING);
+            default -> throw new RuntimeException(Generator.WRONG_CREATURE_TYPE_WARNING);
         }
         System.out.println(attackerName + AGAINST_TEXT + defenderName + "!");
 
@@ -112,7 +114,7 @@ public class GameSession {
                 gamer = gamer.healYourself();
             }
             case "Q" -> {
-                System.out.println(BYE_MESSAGE);
+                System.out.println(App.BYE_MESSAGE);
                 System.exit(0);
             }
             default -> {

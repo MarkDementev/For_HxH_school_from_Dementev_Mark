@@ -28,5 +28,5 @@ compileJava {
 }
 
 application {
-    mainClass = 'forHxH.game.App'
+    mainClass = 'game.App'
 }

@@ -1,4 +1,4 @@
-package forHxH.game.creatures;
+package game.creatures;
 
 public class Monster extends Creature {
     public static final String CREATURE_TYPE_MONSTER = "Monster";
