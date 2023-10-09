@@ -7,3 +7,5 @@ This project is a test task for the Heads and Heads developer school. Not just n
 📱telegram: https://t.me/JavaMarkDem
 
 # Gameplay demo
+
+[![asciicast](https://asciinema.org/a/smhYEytp5SnPoRxLeBCrEXg2Q.svg)](https://asciinema.org/a/smhYEytp5SnPoRxLeBCrEXg2Q)
