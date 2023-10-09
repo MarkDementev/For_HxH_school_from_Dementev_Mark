@@ -1,7 +1,5 @@
 package game.creatures;
 
-import static game.creatures.Gamer.GAMER_DEFAULT_HEAL_POWER_PERCENTAGE;
-import static game.utils.Generator.VARIABLE_ERROR;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -33,7 +31,7 @@ public class GamerTest {
         gamer.setHealCount(1);
         gamer.healYourself();
         assertEquals(Generator.HEALTH_MIN_VALUE
-                        + (int) (GAMER_DEFAULT_HEAL_POWER_PERCENTAGE * Generator.HEALTH_MAX_VALUE),
+                        + (int) (Gamer.GAMER_DEFAULT_HEAL_POWER_PERCENTAGE * Generator.HEALTH_MAX_VALUE),
                 gamer.getCurrentHealth());
     }
 
@@ -44,14 +42,14 @@ public class GamerTest {
                 IllegalArgumentException.class,
                 gamer::healYourself
         );
-        assertTrue(thrownFirst.getMessage().contains(VARIABLE_ERROR + "currentHealth"));
+        assertTrue(thrownFirst.getMessage().contains(Generator.VARIABLE_ERROR + "currentHealth"));
 
         gamer.setCurrentHealth(Generator.HEALTH_MAX_VALUE + 1);
         IllegalArgumentException thrownSecond = assertThrows(
                 IllegalArgumentException.class,
                 gamer::healYourself
         );
-        assertTrue(thrownSecond.getMessage().contains(VARIABLE_ERROR + "currentHealth"));
+        assertTrue(thrownSecond.getMessage().contains(Generator.VARIABLE_ERROR + "currentHealth"));
 
         gamer.setCurrentHealth(Generator.HEALTH_MAX_VALUE);
         gamer.setHealCount(-1);
@@ -59,13 +57,13 @@ public class GamerTest {
                 IllegalArgumentException.class,
                 gamer::healYourself
         );
-        assertTrue(thrownThird.getMessage().contains(VARIABLE_ERROR + "healCount"));
+        assertTrue(thrownThird.getMessage().contains(Generator.VARIABLE_ERROR + "healCount"));
 
         gamer.setHealCount(Gamer.GAMER_DEFAULT_HEAL_COUNT + 1);
         IllegalArgumentException thrownFourth = assertThrows(
                 IllegalArgumentException.class,
                 gamer::healYourself
         );
-        assertTrue(thrownFourth.getMessage().contains(VARIABLE_ERROR + "healCount"));
+        assertTrue(thrownFourth.getMessage().contains(Generator.VARIABLE_ERROR + "healCount"));
     }
 }
