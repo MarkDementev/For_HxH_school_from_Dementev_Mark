@@ -1,5 +1,14 @@
 package game.creatures;
 
+import static game.utils.Generator.ATTACK_MIN_VALUE;
+import static game.utils.Generator.ATTACK_MAX_VALUE;
+import static game.utils.Generator.PROTECTION_MIN_VALUE;
+import static game.utils.Generator.PROTECTION_MAX_VALUE;
+import static game.utils.Generator.DAMAGE_MIN_VALUE;
+import static game.utils.Generator.DAMAGE_MAX_VALUE;
+import static game.utils.Generator.HEALTH_MIN_VALUE;
+import static game.utils.Generator.HEALTH_MAX_VALUE;
+import static game.utils.Generator.VARIABLE_ERROR;
 import game.utils.Dices;
 import game.utils.Generator;
 import java.util.HashSet;
@@ -37,6 +46,21 @@ public abstract class Creature {
     }
 
     public int attackAndCalculateDamage(Creature defender) {
+        if (currentHealth < HEALTH_MIN_VALUE || currentHealth > HEALTH_MAX_VALUE) {
+            throw new IllegalArgumentException(VARIABLE_ERROR + "currentHealth");
+        }
+
+        if (attack < ATTACK_MIN_VALUE || attack > ATTACK_MAX_VALUE) {
+            throw new IllegalArgumentException(VARIABLE_ERROR + "attack");
+        }
+
+        if (defender.protection < PROTECTION_MIN_VALUE || defender.protection > PROTECTION_MAX_VALUE) {
+            throw new IllegalArgumentException(VARIABLE_ERROR + "protection");
+        }
+
+        if (damageRange[0] < DAMAGE_MIN_VALUE || damageRange[1] > DAMAGE_MAX_VALUE) {
+            throw new IllegalArgumentException(VARIABLE_ERROR + "damageRange");
+        }
         int attackModifier = attack - defender.getProtection() + 1;
         int diceCount = Math.max(attackModifier, 1);
         HashSet<Integer> successValues = new HashSet<>();

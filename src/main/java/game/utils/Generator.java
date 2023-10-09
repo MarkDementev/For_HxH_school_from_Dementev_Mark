@@ -7,15 +7,17 @@ import game.creatures.Gamer;
 import game.creatures.Monster;
 
 public class Generator {
+    public static final String VARIABLE_ERROR = "The variable has an incorrect value."
+            + " There was an error in the Generator code, please inform the developer! Problem variable is: ";
     public static final String WRONG_CREATURE_TYPE_WARNING = "There is unknown creature. Check it!";
-    private static final int ATTACK_MIN_VALUE = 1;
-    private static final int ATTACK_MAX_VALUE = 30;
-    private static final int DAMAGE_MIN_VALUE = 0;
-    private static final int DAMAGE_MAX_VALUE = 20;
-    private static final int PROTECTION_MIN_VALUE = 1;
-    private static final int PROTECTION_MAX_VALUE = 30;
-    private static final int HEALTH_MIN_VALUE = 1;
-    private static final int HEALTH_MAX_VALUE = 20;
+    public static final int ATTACK_MIN_VALUE = 1;
+    public static final int ATTACK_MAX_VALUE = 30;
+    public static final int PROTECTION_MIN_VALUE = 1;
+    public static final int PROTECTION_MAX_VALUE = 30;
+    public static final int DAMAGE_MIN_VALUE = 1;
+    public static final int DAMAGE_MAX_VALUE = 30;
+    public static final int HEALTH_MIN_VALUE = 1;
+    public static final int HEALTH_MAX_VALUE = 30;
 
     public static int generateValue(int minValue, int maxValue) {
         return (int) (Math.random() * (maxValue - minValue) + minValue);
