@@ -1,17 +1,17 @@
 package game.engine;
 
 import static game.creatures.Monster.CREATURE_TYPE_MONSTER;
-import static game.creatures.Gamer.CREATURE_TYPE_GAMER;
+import static game.creatures.Player.CREATURE_TYPE_PLAYER;
 import game.creatures.Creature;
 import game.utils.Generator;
 
 public class GamePreparation {
     public static void prepareGame(String turnOrder) {
-        Creature[] monsterAndGamer = new Creature[2];
-        monsterAndGamer[0] = Generator.generateDefaultCreature(CREATURE_TYPE_MONSTER);
-        monsterAndGamer[1] = Generator.generateDefaultCreature(CREATURE_TYPE_GAMER);
+        Creature[] monsterAndPlayer = new Creature[2];
+        monsterAndPlayer[0] = Generator.generateDefaultCreature(CREATURE_TYPE_MONSTER);
+        monsterAndPlayer[1] = Generator.generateDefaultCreature(CREATURE_TYPE_PLAYER);
 
-        GameSession gameSession = new GameSession(turnOrder, monsterAndGamer);
+        GameSession gameSession = new GameSession(turnOrder, monsterAndPlayer);
         gameSession.playGame();
     }
 }

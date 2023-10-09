@@ -1,9 +1,9 @@
 package game.utils;
 
 import static game.creatures.Monster.CREATURE_TYPE_MONSTER;
-import static game.creatures.Gamer.CREATURE_TYPE_GAMER;
+import static game.creatures.Player.CREATURE_TYPE_PLAYER;
 import game.creatures.Creature;
-import game.creatures.Gamer;
+import game.creatures.Player;
 import game.creatures.Monster;
 
 public class Generator {
@@ -37,8 +37,8 @@ public class Generator {
             case CREATURE_TYPE_MONSTER -> {
                 return new Monster(attack, damageRange, protection, health);
             }
-            case CREATURE_TYPE_GAMER -> {
-                return new Gamer(attack, damageRange, protection, health);
+            case CREATURE_TYPE_PLAYER -> {
+                return new Player(attack, damageRange, protection, health);
             }
             default -> throw new RuntimeException(WRONG_CREATURE_TYPE_WARNING);
         }

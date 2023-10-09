@@ -1,13 +1,13 @@
 package game.utils;
 
-import static game.creatures.Gamer.CREATURE_TYPE_GAMER;
+import static game.creatures.Player.CREATURE_TYPE_PLAYER;
 import static game.creatures.Monster.CREATURE_TYPE_MONSTER;
 import static game.utils.Generator.WRONG_CREATURE_TYPE_WARNING;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import game.creatures.Gamer;
+import game.creatures.Player;
 import game.creatures.Monster;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
@@ -35,13 +35,13 @@ public class GeneratorTest {
     @Test
     public void testGenerateDefaultCreature() {
         Monster monster = (Monster) Generator.generateDefaultCreature(CREATURE_TYPE_MONSTER);
-        Gamer gamer = (Gamer) Generator.generateDefaultCreature(CREATURE_TYPE_GAMER);
+        Player player = (Player) Generator.generateDefaultCreature(CREATURE_TYPE_PLAYER);
 
         assertNotNull(monster);
         assertNotNull(monster.getDamageRange());
 
-        assertNotNull(gamer);
-        assertNotNull(gamer.getDamageRange());
+        assertNotNull(player);
+        assertNotNull(player.getDamageRange());
     }
 
     @Test

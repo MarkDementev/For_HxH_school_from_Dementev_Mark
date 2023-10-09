@@ -1,6 +1,6 @@
 package game;
 
-import static game.creatures.Gamer.CREATURE_TYPE_GAMER;
+import static game.creatures.Player.CREATURE_TYPE_PLAYER;
 import static game.creatures.Monster.CREATURE_TYPE_MONSTER;
 import game.engine.GamePreparation;
 import java.util.Scanner;
@@ -25,7 +25,7 @@ public class App {
         String playerTurnOrderChoice = gameStartScanner.next();
 
         switch (playerTurnOrderChoice) {
-            case "A" -> GamePreparation.prepareGame(CREATURE_TYPE_GAMER);
+            case "A" -> GamePreparation.prepareGame(CREATURE_TYPE_PLAYER);
             case "D" -> GamePreparation.prepareGame(CREATURE_TYPE_MONSTER);
             case "Q" -> {
                 System.out.println(BYE_MESSAGE);
