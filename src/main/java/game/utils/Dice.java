@@ -2,7 +2,7 @@ package game.utils;
 
 import java.util.HashSet;
 
-public class Dices {
+public class Dice {
     public static final int[] DICE_TYPE_SIX_SIDED = {1, 6};
 
     public static boolean isSuccessfulThrowOneEnough(int[] diceType, int dicesCount, HashSet<Integer> successValues) {

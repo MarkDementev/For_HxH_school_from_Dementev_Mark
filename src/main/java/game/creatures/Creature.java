@@ -9,7 +9,7 @@ import static game.utils.Generator.DAMAGE_MAX_VALUE;
 import static game.utils.Generator.HEALTH_MIN_VALUE;
 import static game.utils.Generator.HEALTH_MAX_VALUE;
 import static game.utils.Generator.VARIABLE_ERROR;
-import game.utils.Dices;
+import game.utils.Dice;
 import game.utils.Generator;
 import java.util.HashSet;
 
@@ -72,7 +72,7 @@ public abstract class Creature {
         for (int successfulValue : CREATURE_DEFAULT_SUCCESSFUL_ATTACK_VALUES) {
             successValues.add(successfulValue);
         }
-        boolean isSuccessfulAttack = Dices.isSuccessfulThrowOneEnough(Dices.DICE_TYPE_SIX_SIDED,
+        boolean isSuccessfulAttack = Dice.isSuccessfulThrowOneEnough(Dice.DICE_TYPE_SIX_SIDED,
                 diceCount, successValues);
         int damagePower = Generator.generateValue(damageRange[0], damageRange[1]);
 
