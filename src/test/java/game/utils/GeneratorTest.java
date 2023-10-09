@@ -13,9 +13,9 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 public class GeneratorTest {
-    public static final int GENERATOR_TESTS_STEPS = 100;
-    public static final int GENERATOR_TESTS_MIN_VALUE = 1;
-    public static final int GENERATOR_TESTS_MAX_VALUE = 30;
+    public static final int GENERATOR_TESTS_STEPS = 1000;
+    public static final int GENERATOR_TESTS_MIN_VALUE = Generator.ATTACK_MIN_VALUE;
+    public static final int GENERATOR_TESTS_MAX_VALUE = Generator.ATTACK_MAX_VALUE;
     public static final String CREATURE_NOT_EXIST_TYPE = "Not exist creature";
 
     @Test
@@ -42,7 +42,10 @@ public class GeneratorTest {
 
         assertNotNull(gamer);
         assertNotNull(gamer.getDamageRange());
+    }
 
+    @Test
+    public void testGenerateDefaultCreatureWithException() {
         RuntimeException thrown = assertThrows(
                 RuntimeException.class,
                 () -> Generator.generateDefaultCreature(CREATURE_NOT_EXIST_TYPE)
