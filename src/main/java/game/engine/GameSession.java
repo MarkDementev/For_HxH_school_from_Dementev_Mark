@@ -2,13 +2,11 @@ package game.engine;
 
 import static game.creatures.Gamer.CREATURE_TYPE_GAMER;
 import static game.creatures.Monster.CREATURE_TYPE_MONSTER;
-
 import game.App;
 import game.creatures.Creature;
 import game.creatures.Gamer;
 import game.creatures.Monster;
 import game.utils.Generator;
-
 import java.util.Scanner;
 
 public class GameSession {
@@ -26,6 +24,8 @@ public class GameSession {
     public static final String GAMER_ATTACK_FAIL_TEXT = "The Gamer attack missed the Monster! :(";
     public static final String MONSTER_ATTACK_SUCCESS_TEXT = "The Monster damaged Gamer for ";
     public static final String MONSTER_ATTACK_FAIL_TEXT = "The Monster attack missed the Gamer! :)";
+    public static final String UI_ELEMENT_FIRST = "~~~~~~~~~~~~";
+    public static final String UI_ELEMENT_SECOND = "------------";
     private String turnOrder;
     private Monster monster;
     private Gamer gamer;
@@ -56,12 +56,12 @@ public class GameSession {
         String defenderName;
         int damageInRound = 0;
 
-        System.out.println("~~~~~~~~~~~~");
+        System.out.println(UI_ELEMENT_FIRST);
         System.out.println(CREATURE_TYPE_GAMER + HEALTH_STATUS + gamer.getCurrentHealth());
         System.out.println(CREATURE_TYPE_GAMER + HEAL_COUNT_STATUS + gamer.getHealCount());
-        System.out.println("------------");
+        System.out.println(UI_ELEMENT_SECOND);
         System.out.println(CREATURE_TYPE_MONSTER + HEALTH_STATUS + monster.getCurrentHealth());
-        System.out.println("~~~~~~~~~~~~");
+        System.out.println(UI_ELEMENT_FIRST);
 
         switch (turnOrder) {
             case CREATURE_TYPE_GAMER -> {

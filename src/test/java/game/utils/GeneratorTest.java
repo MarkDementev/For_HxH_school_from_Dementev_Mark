@@ -1,0 +1,52 @@
+package game.utils;
+
+import static game.creatures.Gamer.CREATURE_TYPE_GAMER;
+import static game.creatures.Monster.CREATURE_TYPE_MONSTER;
+import static game.utils.Generator.WRONG_CREATURE_TYPE_WARNING;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import game.creatures.Gamer;
+import game.creatures.Monster;
+import org.junit.jupiter.api.Test;
+import java.util.ArrayList;
+
+public class GeneratorTest {
+    public static final int GENERATOR_TESTS_STEPS = 100;
+    public static final int GENERATOR_TESTS_MIN_VALUE = 1;
+    public static final int GENERATOR_TESTS_MAX_VALUE = 30;
+    public static final String CREATURE_NOT_EXIST_TYPE = "Not exist creature";
+
+    @Test
+    public void testGenerateValue() {
+        ArrayList<Integer> testList = new ArrayList<>();
+
+        for (int i = 0; i < GENERATOR_TESTS_STEPS; i++) {
+            int newElement = Generator.generateValue(GENERATOR_TESTS_MIN_VALUE, GENERATOR_TESTS_MAX_VALUE);
+
+            if (newElement <= GENERATOR_TESTS_MAX_VALUE && newElement >= GENERATOR_TESTS_MIN_VALUE) {
+                testList.add(newElement);
+            }
+        }
+        assertEquals(GENERATOR_TESTS_STEPS, testList.size());
+    }
+
+    @Test
+    public void testGenerateDefaultCreature() {
+        Monster monster = (Monster) Generator.generateDefaultCreature(CREATURE_TYPE_MONSTER);
+        Gamer gamer = (Gamer) Generator.generateDefaultCreature(CREATURE_TYPE_GAMER);
+
+        assertNotNull(monster);
+        assertNotNull(monster.getDamageRange());
+
+        assertNotNull(gamer);
+        assertNotNull(gamer.getDamageRange());
+
+        RuntimeException thrown = assertThrows(
+                RuntimeException.class,
+                () -> Generator.generateDefaultCreature(CREATURE_NOT_EXIST_TYPE)
+        );
+        assertTrue(thrown.getMessage().contains(WRONG_CREATURE_TYPE_WARNING));
+    }
+}
