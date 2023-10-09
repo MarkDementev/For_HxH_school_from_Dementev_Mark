@@ -15,7 +15,7 @@ public class GameSession {
     public static final String AGAINST_TEXT = " acts against ";
     public static final String PLAYER_ROUND_EXPLANATION = "Player, are you attack or heal yourself?"
             + " Enter your choice - A or H.";
-    public static final String HEAL_RESULT_TEXT = "Player healed yourself for ";
+    public static final String HEAL_RESULT_TEXT = "Player try to heal yourself for ";
     public static final String WRONG_TURN_INPUT_ERROR = "Wrong input. Please, input A to attack Monster or H "
             + "to heal yourself, or Q to exit.";
     public static final String HEALTH_STATUS = " current health is now ";
